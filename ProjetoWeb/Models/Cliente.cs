@@ -10,6 +10,7 @@ namespace ProjetoWeb.Models
     [Table("RevisoesDeCarro")]
     public class Cliente
     {
+
         [Display(Name = "Id")]
         [Column("Id")]
         int _id;
