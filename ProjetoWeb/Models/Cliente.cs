@@ -7,60 +7,34 @@ using System.Threading.Tasks;
 
 namespace ProjetoWeb.Models
 {
-    [Table("RevisoesDeCarro")]
+    [Table("Clientes")]
     public class Cliente
     {
 
         [Display(Name = "Id")]
         [Column("Id")]
         int _id;
-        public int Id
-        {
-            get { return _id; }
-
-            set { _id = value; }
-        }
-
 
         [Display(Name = "Nome")]
         [Column("Nome")]
         string _nome;
-        public string Nome
-        {
-            get { return _nome; }
-
-            set { _nome = value; }
-        }
 
         [Display(Name = "Telefone")]
         [Column("Telefone")]
         int _telefone;
-        public int Telefone
-        {
-            get { return _telefone; }
-
-            set { _telefone = value; }
-        }
-
 
         [Display(Name = "Endereco")]
         [Column("Endereco")]
         string _endereco;
-        public string Endereco
-        {
-            get { return _endereco; }
-
-            set { _endereco = value; }
-        }
 
         [Display(Name = "CPF")]
         [Column("CPF")]
         int _cpf;
-        public int CPF
-        {
-            get { return _cpf; }
 
-            set { _cpf = value; }
-        }
+        public int Id { get => _id; set => _id = value; }
+        public string Nome { get => _nome; set => _nome = value; }
+        public int Telefone { get => _telefone; set => _telefone = value; }
+        public string Endereco { get => _endereco; set => _endereco = value; }
+        public int Cpf { get => _cpf; set => _cpf = value; }
     }
 }
