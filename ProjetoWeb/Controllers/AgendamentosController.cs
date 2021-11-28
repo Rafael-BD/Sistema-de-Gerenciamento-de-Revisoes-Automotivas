@@ -9,23 +9,23 @@ using ProjetoWeb.Models;
 
 namespace ProjetoWeb.Controllers
 {
-    public class VeiculosController : Controller
+    public class AgendamentosController : Controller
     {
         private readonly Context _context;
 
-        public VeiculosController(Context context)
+        public AgendamentosController(Context context)
         {
             _context = context;
         }
 
-        // GET: Veiculos
+        // GET: Agendamentos
         public async Task<IActionResult> Index()
         {
-            var context = _context.Veiculo.Include(v => v.Cliente);
+            var context = _context.Agendamento.Include(a => a.Veiculo);
             return View(await context.ToListAsync());
         }
 
-        // GET: Veiculos/Details/5
+        // GET: Agendamentos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,42 +33,42 @@ namespace ProjetoWeb.Controllers
                 return NotFound();
             }
 
-            var veiculo = await _context.Veiculo
-                .Include(v => v.Cliente)
+            var agendamento = await _context.Agendamento
+                .Include(a => a.Veiculo)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (veiculo == null)
+            if (agendamento == null)
             {
                 return NotFound();
             }
 
-            return View(veiculo);
+            return View(agendamento);
         }
 
-        // GET: Veiculos/Create
+        // GET: Agendamentos/Create
         public IActionResult Create()
         {
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Nome");
+            ViewData["VeiculoId"] = new SelectList(_context.Veiculo, "Id", "NumeroPlaca");
             return View();
         }
 
-        // POST: Veiculos/Create
+        // POST: Agendamentos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Modelo,NumeroPlaca,Ano,Valor,Id,ClienteId")] Veiculo veiculo)
+        public async Task<IActionResult> Create([Bind("Id,Date,VeiculoId")] Agendamento agendamento)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(veiculo);
+                _context.Add(agendamento);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", veiculo.ClienteId);
-            return View(veiculo);
+            ViewData["VeiculoId"] = new SelectList(_context.Veiculo, "Id", "Id", agendamento.VeiculoId);
+            return View(agendamento);
         }
 
-        // GET: Veiculos/Edit/5
+        // GET: Agendamentos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -76,23 +76,23 @@ namespace ProjetoWeb.Controllers
                 return NotFound();
             }
 
-            var veiculo = await _context.Veiculo.FindAsync(id);
-            if (veiculo == null)
+            var agendamento = await _context.Agendamento.FindAsync(id);
+            if (agendamento == null)
             {
                 return NotFound();
             }
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Nome", veiculo.ClienteId);
-            return View(veiculo);
+            ViewData["VeiculoId"] = new SelectList(_context.Veiculo, "Id", "NumeroPlaca", agendamento.VeiculoId);
+            return View(agendamento);
         }
 
-        // POST: Veiculos/Edit/5
+        // POST: Agendamentos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Modelo,NumeroPlaca,Ano,Valor,Id,ClienteId")] Veiculo veiculo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Date,VeiculoId")] Agendamento agendamento)
         {
-            if (id != veiculo.Id)
+            if (id != agendamento.Id)
             {
                 return NotFound();
             }
@@ -101,12 +101,12 @@ namespace ProjetoWeb.Controllers
             {
                 try
                 {
-                    _context.Update(veiculo);
+                    _context.Update(agendamento);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!VeiculoExists(veiculo.Id))
+                    if (!AgendamentoExists(agendamento.Id))
                     {
                         return NotFound();
                     }
@@ -117,11 +117,11 @@ namespace ProjetoWeb.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Id", veiculo.ClienteId);
-            return View(veiculo);
+            ViewData["VeiculoId"] = new SelectList(_context.Veiculo, "Id", "Id", agendamento.VeiculoId);
+            return View(agendamento);
         }
 
-        // GET: Veiculos/Delete/5
+        // GET: Agendamentos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -129,31 +129,31 @@ namespace ProjetoWeb.Controllers
                 return NotFound();
             }
 
-            var veiculo = await _context.Veiculo
-                .Include(v => v.Cliente)
+            var agendamento = await _context.Agendamento
+                .Include(a => a.Veiculo)
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (veiculo == null)
+            if (agendamento == null)
             {
                 return NotFound();
             }
 
-            return View(veiculo);
+            return View(agendamento);
         }
 
-        // POST: Veiculos/Delete/5
+        // POST: Agendamentos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var veiculo = await _context.Veiculo.FindAsync(id);
-            _context.Veiculo.Remove(veiculo);
+            var agendamento = await _context.Agendamento.FindAsync(id);
+            _context.Agendamento.Remove(agendamento);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool VeiculoExists(int id)
+        private bool AgendamentoExists(int id)
         {
-            return _context.Veiculo.Any(e => e.Id == id);
+            return _context.Agendamento.Any(e => e.Id == id);
         }
     }
 }
