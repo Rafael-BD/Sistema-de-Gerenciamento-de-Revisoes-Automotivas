@@ -13,27 +13,27 @@ namespace ProjetoWeb.Models
     {
         [Display(Name = "ID")]
         [Column("ID")]
-        int _id;
+        private int _id;
 
         [Display(Name = "Numero da Placa")]
-        [Column("NumeroPlaca")]
-        string _numeroPlaca;
+        [Column("NumeroPlaca")][Required]
+        private string _numeroPlaca;
 
         [Display(Name = "Modelo")]
-        [Column("Modelo")]
-        string _modelo;
+        [Column("Modelo")][Required]
+        private string _modelo;
 
         [Display(Name = "Ano")]
         [Column("Ano")]
-        int _ano;
+        private int _ano;
 
         [Display(Name = "Valor")]
         [Column("Valor")]
-        float _valor;
+        private float _valor;
 
         [Display(Name = "Cliente")]
-        int _clienteId;
-        public Cliente Cliente { get; set; }
+        private int _clienteId;
+        private Cliente _cliente;
 
         public string Modelo { get => _modelo; set => _modelo = value; }
         public string NumeroPlaca { get => _numeroPlaca; set => _numeroPlaca = value; }
@@ -41,5 +41,6 @@ namespace ProjetoWeb.Models
         public float Valor { get => _valor; set => _valor = value; }
         public int Id { get => _id; set => _id = value; }
         public int ClienteId { get => _clienteId; set => _clienteId = value; }
+        public Cliente Cliente { get => _cliente; set => _cliente = value; }
     }
 }

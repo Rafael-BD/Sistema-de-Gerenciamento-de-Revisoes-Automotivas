@@ -13,23 +13,23 @@ namespace ProjetoWeb.Models
 
         [Display(Name = "Id")]
         [Column("Id")]
-        int _id;
+        private int _id;
 
         [Display(Name = "Nome")]
-        [Column("Nome")]
-        string _nome;
+        [Column("Nome")][Required]
+        private string _nome;
 
         [Display(Name = "Telefone")]
         [Column("Telefone")]
-        int _telefone;
+        private int _telefone;
 
         [Display(Name = "Endereco")]
-        [Column("Endereco")]
-        string _endereco;
+        [Column("Endereco")][Required]
+        private string _endereco;
 
         [Display(Name = "CPF")]
         [Column("CPF")]
-        int _cpf;
+        private int _cpf;
 
         public int Id { get => _id; set => _id = value; }
         public string Nome { get => _nome; set => _nome = value; }

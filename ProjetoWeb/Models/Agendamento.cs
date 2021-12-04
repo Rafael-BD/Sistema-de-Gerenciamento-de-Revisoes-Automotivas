@@ -12,15 +12,15 @@ namespace ProjetoWeb.Models
     {
         [Display(Name = "ID")]
         [Column("ID")]
-        int _id;
+        private int _id;
 
         [Display(Name = "Data")]
         [Column("Data")]
-        DateTime _date;
+        private DateTime _date;
 
         [Display(Name = "Veiculo")]
         int _veiculoId;
-        Veiculo _veiculo;
+        private Veiculo _veiculo;
 
 
         public int Id { get => _id; set => _id = value; }

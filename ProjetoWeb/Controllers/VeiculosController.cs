@@ -21,7 +21,7 @@ namespace ProjetoWeb.Controllers
         // GET: Veiculos
         public async Task<IActionResult> Index()
         {
-            var context = _context.Veiculo.Include(v => v.Cliente);
+            var context = _context.Veiculo.Include(v => v.Cliente1);
             return View(await context.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace ProjetoWeb.Controllers
             }
 
             var veiculo = await _context.Veiculo
-                .Include(v => v.Cliente)
+                .Include(v => v.Cliente1)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (veiculo == null)
             {
@@ -130,7 +130,7 @@ namespace ProjetoWeb.Controllers
             }
 
             var veiculo = await _context.Veiculo
-                .Include(v => v.Cliente)
+                .Include(v => v.Cliente1)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (veiculo == null)
             {
