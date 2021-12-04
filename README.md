@@ -8,12 +8,10 @@
       <img align="center" alt="Csharp" height="60" width="80" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg">
       <img align="center" alt="asp-net" height="60" width="80" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg">
       <img align="center" alt="asp-net" height="60" width="80" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/visualstudio/visualstudio-plain.svg">
-    </p></br></br>
+    </p>
     <h3>Sistema em Funcionamento: </h3>
-     <video width="320" height="240" controls>
-       <source src="captura.mp4" type="video/mp4">
-       Your browser does not support the video tag.
-     </video> 
+     </br></br>
+     <h3>Diagramas: </h3>
    </body>
 </html>
 
