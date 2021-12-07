@@ -13,6 +13,8 @@
     <img src="Prints/captura.gif">
      </br></br>
      <h3>Diagramas: </h3>
+     <img src="Prints/diagramaClasses.png">
+     <img src="Prints/diagramaBD.png">
      </br></br>
      <h3>Tecnologias Usadas:</h3>
      <p>C#</p>
